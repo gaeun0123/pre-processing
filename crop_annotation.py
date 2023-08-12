@@ -26,7 +26,7 @@ def crop_image_and_update_yolo_annotations(img_path, anno_path, output_folder, c
         height_new = height * h / (y2 - y1)
 
         if 0 <= x_center_new <= 1 and 0 <= y_center_new <= 1:
-            updated_annotations.append(f"{class_id} {x_center_new} {y_center_new} {width_new} {height_new}\n")
+            updated_annotations.append(f"{int(class_id)} {x_center_new} {y_center_new} {width_new} {height_new}\n")
 
     anno_output_path = os.path.join(output_folder, os.path.basename(anno_path))
     with open(anno_output_path, 'w') as f:
@@ -35,13 +35,13 @@ def crop_image_and_update_yolo_annotations(img_path, anno_path, output_folder, c
 
 # 본인 이미지 주소, annotation주소, 저장될 폴더 주소, crop할 영역 입력
 if __name__ == '__main__':
-    img_path = '/path'
-    anno_path = '/path'
-    output_folder = '/path'
+    img_path = '/Users/choiga-eun/datasets/DenseHoneyBeeDetection_MultiClass.v9i.yolov8/test/Low_Quality/African-bees_jpg.rf.d5ec1d65aae05885cf806446e51e4909.jpg'
+    anno_path = '/Users/choiga-eun/datasets/DenseHoneyBeeDetection_MultiClass.v9i.yolov8/test/low_label/African-bees_jpg.rf.d5ec1d65aae05885cf806446e51e4909.txt'
+    output_folder = '/Users/choiga-eun/datasets/DenseHoneyBeeDetection_MultiClass.v9i.yolov8/test/low_images'
     # output폴더 경로를 못찾는 에러 -> 없으면 새로 폴더를 만드는 코드
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
     #(x1, y1, x2, y2)
-    crop_box = (0, 80, 382, 250)
+    crop_box = (100, 0, 800, 600)
 
     crop_image_and_update_yolo_annotations(img_path, anno_path, output_folder, crop_box)
