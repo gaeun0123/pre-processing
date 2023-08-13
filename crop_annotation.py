@@ -35,13 +35,13 @@ def crop_image_and_update_yolo_annotations(img_path, anno_path, output_folder, c
 
 # 본인 이미지 주소, annotation주소, 저장될 폴더 주소, crop할 영역 입력
 if __name__ == '__main__':
-    img_path = '/Users/choiga-eun/datasets/DenseHoneyBeeDetection_MultiClass.v9i.yolov8/test/Low_Quality/African-bees_jpg.rf.d5ec1d65aae05885cf806446e51e4909.jpg'
-    anno_path = '/Users/choiga-eun/datasets/DenseHoneyBeeDetection_MultiClass.v9i.yolov8/test/low_label/African-bees_jpg.rf.d5ec1d65aae05885cf806446e51e4909.txt'
-    output_folder = '/Users/choiga-eun/datasets/DenseHoneyBeeDetection_MultiClass.v9i.yolov8/test/low_images'
+    img_path = '/'
+    anno_path = '/'
+    output_folder = '/'
     # output폴더 경로를 못찾는 에러 -> 없으면 새로 폴더를 만드는 코드
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
     #(x1, y1, x2, y2)
-    crop_box = (100, 0, 800, 600)
+    crop_box = (1000, 0, 4840, 2594)
 
     crop_image_and_update_yolo_annotations(img_path, anno_path, output_folder, crop_box)
